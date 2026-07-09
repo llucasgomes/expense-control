@@ -1,0 +1,67 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "expenseControl.Application/1.0.0": {
+        "dependencies": {
+          "expenseControl.Communication": "1.0.0",
+          "expenseControl.Domain": "1.0.0",
+          "expenseControl.Exceptions": "1.0.0"
+        },
+        "runtime": {
+          "expenseControl.Application.dll": {}
+        }
+      },
+      "expenseControl.Communication/1.0.0": {
+        "runtime": {
+          "expenseControl.Communication.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "expenseControl.Domain/1.0.0": {
+        "runtime": {
+          "expenseControl.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "expenseControl.Exceptions/1.0.0": {
+        "runtime": {
+          "expenseControl.Exceptions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "expenseControl.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "expenseControl.Communication/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "expenseControl.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "expenseControl.Exceptions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

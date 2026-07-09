@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9"/>
+        <PackageReference Include="Scalar.AspNetCore" Version="2.16.11" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\expenseControl.Application\expenseControl.Application.csproj" />
+      <ProjectReference Include="..\expenseControl.Communication\expenseControl.Communication.csproj" />
+      <ProjectReference Include="..\expenseControl.Exceptions\expenseControl.Exceptions.csproj" />
+    </ItemGroup>
+
+</Project>

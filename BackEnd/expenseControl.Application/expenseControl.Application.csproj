@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\expenseControl.Communication\expenseControl.Communication.csproj" />
+      <ProjectReference Include="..\expenseControl.Domain\expenseControl.Domain.csproj" />
+      <ProjectReference Include="..\expenseControl.Exceptions\expenseControl.Exceptions.csproj" />
+    </ItemGroup>
+
+</Project>
