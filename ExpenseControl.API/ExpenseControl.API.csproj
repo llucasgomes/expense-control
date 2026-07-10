@@ -11,4 +11,12 @@
         <PackageReference Include="Scalar.AspNetCore" Version="2.16.11" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Emnuns\" />
+      <Folder Include="Entities\" />
+      <Folder Include="Filters\" />
+      <Folder Include="Infraestructure\" />
+      <Folder Include="UseCases\" />
+    </ItemGroup>
+
 </Project>
