@@ -23,6 +23,8 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference("/docs");
 }
 
+//Console.WriteLine(Directory.GetCurrentDirectory());
+
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();

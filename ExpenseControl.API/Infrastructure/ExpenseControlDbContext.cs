@@ -1,15 +1,18 @@
 using ExpenseControl.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace ExpenseControl.API.Infrastructure;
-
-public class ExpenseControlDbContext:DbContext
+public class ExpenseControlDbContext : DbContext
 {
-    public DbSet<Person> Peoples { get; set; }
-    public DbSet<Transaction> Products { get; set; }
 
+    public DbSet<Person> People { get; set; }
+    public DbSet<Transaction> Transactions { get; set; }
+
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=C:\\Banco de Dados\\Entity Framework\\ProductClientHubEF\\ProductClientHubDB.db");
+        var databasePath = Path.Combine(AppContext.BaseDirectory, "expenseControlData.db");
+        optionsBuilder.UseSqlite($"Data Source={databasePath}");
     }
 }
