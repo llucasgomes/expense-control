@@ -1,3 +1,4 @@
+using ExpenseControl.API.Filters;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,9 @@ builder.Services.AddOpenApi();
 
 // configura para que as urls sejam minusculas
 builder.Services.AddRouting(option => option.LowercaseUrls = true);
+
+// Configura um filtro Geral
+builder.Services.AddMvc(options => options.Filters.Add<ExceptionFilter>());
 
 var app = builder.Build();
 
