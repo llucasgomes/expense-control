@@ -1,3 +1,4 @@
+using ExpenseControl.API.UseCases.Person.Delete;
 using ExpenseControl.API.UseCases.Person.GetAll;
 using ExpenseControl.API.UseCases.Person.GetById;
 using ExpenseControl.API.UseCases.Person.Update;
@@ -76,5 +77,21 @@ public class PersonController :  ControllerBase
         var response = useCase.Execute(id, request);
 
         return NoContent();
+    }
+    
+    
+    //  Definindo que o método responde a requisições DELETE (DELETE)
+    [HttpDelete]
+    [Route("{personId:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponseErrorMessageJson), StatusCodes.Status404NotFound)]
+
+    public IActionResult Delete([FromRoute] Guid personId)
+    {
+        var useCase = new DeletePersonUseCase();
+        useCase.Execute(personId);
+        
+        return NoContent();
+        
     }
 }
