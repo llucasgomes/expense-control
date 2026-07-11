@@ -1,4 +1,5 @@
 using ExpenseControl.API.UseCases.Person.GetAll;
+using ExpenseControl.API.UseCases.Person.GetById;
 using ExpenseControl.Communication.Requests;
 using ExpenseControl.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,7 @@ public class PersonController :  ControllerBase
     [HttpGet]
     [ProducesResponseType<ResponseAllPersonJson>(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public IActionResult GetAll()
     {
         var useCase = new GetAllPersonUseCase();
@@ -43,5 +45,21 @@ public class PersonController :  ControllerBase
         }
             
         return Ok(response);
+    }
+    
+    [HttpGet]
+    // informa que o parâmetro da rota é "id"
+    // Responsável por diferenciar os métodos GET
+    [Route("{id:guid}")]
+    [ProducesResponseType(typeof(ResponsePersonAllTransactionsJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseErrorMessageJson), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult GetById([FromRoute]Guid id)
+    {
+        var useCase = new GetPersonByIdUseCase();
+
+        var response = useCase.Execute(id);
+
+        return Ok(response); 
     }
 }
