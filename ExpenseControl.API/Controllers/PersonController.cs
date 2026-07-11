@@ -1,5 +1,6 @@
 using ExpenseControl.API.UseCases.Person.GetAll;
 using ExpenseControl.API.UseCases.Person.GetById;
+using ExpenseControl.API.UseCases.Person.Update;
 using ExpenseControl.Communication.Requests;
 using ExpenseControl.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -61,5 +62,19 @@ public class PersonController :  ControllerBase
         var response = useCase.Execute(id);
 
         return Ok(response); 
+    }
+    
+    [HttpPut]
+    [Route("{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponsePersonJson), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ResponsePersonJson), StatusCodes.Status404NotFound)]
+    public IActionResult Update([FromRoute] Guid id, [FromBody] RequestRegisterPersonJson request)
+    {
+        var useCase = new UpdatePersonUseCase();
+
+        var response = useCase.Execute(id, request);
+
+        return NoContent();
     }
 }
