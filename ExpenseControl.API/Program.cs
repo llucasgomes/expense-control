@@ -14,6 +14,8 @@ builder.Services.AddRouting(option => option.LowercaseUrls = true);
 // Configura um filtro Geral
 builder.Services.AddMvc(options => options.Filters.Add<ExceptionFilter>());
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

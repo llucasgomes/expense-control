@@ -12,7 +12,10 @@ public class ExpenseControlDbContext : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        var databasePath = Path.Combine(AppContext.BaseDirectory, "expenseControlData.db");
+        var baseDirectory = AppContext.BaseDirectory; // .../ExpenseControl.API/bin/Debug/net10.0/
+        var projectRoot = Path.GetFullPath(Path.Combine(baseDirectory, "..", "..", ".."));
+        var databasePath = Path.Combine(projectRoot, "expenseControlData.db");
+        Console.WriteLine(databasePath);
         optionsBuilder.UseSqlite($"Data Source={databasePath}");
     }
 }
