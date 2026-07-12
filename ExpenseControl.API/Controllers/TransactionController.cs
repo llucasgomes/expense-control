@@ -1,3 +1,4 @@
+using ExpenseControl.API.UseCases.Transaction.GetAll;
 using ExpenseControl.API.UseCases.Transaction.Register;
 using ExpenseControl.Communication.Requests;
 using ExpenseControl.Communication.Responses;
@@ -24,5 +25,23 @@ public class TransactionController : ControllerBase
 
         //var newUser = useCase.Execute(user); 
         return Created(string.Empty, new { Message = "Transação registrada com sucesso",Transaction=transaction });
+    }
+    
+    [HttpGet]
+    [ProducesResponseType<ResponseAllTransactionsJson>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult GetAll()
+    {
+        var useCase = new GetAllTransactionsUseCase();
+
+        var response = useCase.Execute(); 
+
+        if (response.Transactions.Count == 0)
+        {
+            return NoContent();
+        }
+            
+        return Ok(response);
     }
 }
