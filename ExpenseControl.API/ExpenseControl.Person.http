@@ -1,0 +1,51 @@
+
+
+### ============================
+### GET - Listar todas as pessoas
+### ============================
+GET http://localhost:5017/api/person
+Accept: application/json
+
+
+### ============================
+### GET - Listar todas as pessoas
+### ============================
+GET http://localhost:5017/api/person/649f2326-c0d6-41b8-b8c9-a0ca424e6d05
+Accept: application/json
+
+###
+
+### ============================
+### POST - Registrar uma pessoa
+### ============================
+POST http://localhost:5017/api/person
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "João Silva",
+  "age": 30
+}
+###
+
+### ============================
+### PUT - Atualizar pessoa (endpoint ainda não implementado)
+### ============================
+PUT http://localhost:5017/api/person/649f2326-c0d6-41b8-b8c9-a0ca424e6d05
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "João Silva Atualizado",
+  "age": 31
+}
+
+###
+
+### ============================
+### DELETE - Remover pessoa inexistente (esperado: 404)
+### ============================
+DELETE http://localhost:5017/api/person/649f2326-c0d6-41b8-b8c9-a0ca424e6d05
+Accept: application/json
+
+###

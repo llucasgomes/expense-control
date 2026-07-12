@@ -16,7 +16,7 @@ public class PersonController :  ControllerBase
     // Definindo como a url deve ser construída
     [HttpPost]
     // Retorna o status code 201 (Created) quando a criação for bem sucedida
-    //[ProducesResponseType(typeof(ResponsePersonJson),StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ResponsePersonJson),StatusCodes.Status201Created)]
     // Retorna o status code 400 (Bad Request) quando houver erro na requisição
     [ProducesResponseType(typeof(ResponseErrorMessageJson), StatusCodes.Status400BadRequest)]
     // Retorna o status code 500 (Server Error) quando houver erro no servidor

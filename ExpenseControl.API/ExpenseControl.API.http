@@ -1,6 +1,0 @@
-@ExpenseControl.API_HostAddress = http://localhost:5017
-
-GET http://localhost:5017/api/person
-Accept: application/json
-
-###

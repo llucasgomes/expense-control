@@ -1,0 +1,5 @@
+### ============================
+### GET - Listar todas as pessoas
+### ============================
+GET http://localhost:5017/api/transaction
+Accept: application/json

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 using ExpenseControl.Communication.Enums;
 
 namespace ExpenseControl.Communication.Requests;

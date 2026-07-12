@@ -3,7 +3,7 @@ using ExpenseControl.Communication.Enums;
 
 namespace ExpenseControl.API.Entities;
 
-public class Transaction:EntityBase
+public class Transaction :EntityBase
 {
     public string Description { get; set; } = string.Empty;
 
