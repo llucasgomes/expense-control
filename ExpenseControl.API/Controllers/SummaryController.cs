@@ -1,3 +1,4 @@
+using ExpenseControl.API.UseCases.Summary.GetAll;
 using ExpenseControl.API.UseCases.Transaction.SummaryById;
 using ExpenseControl.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,17 @@ public class SummaryController:ControllerBase
             return NoContent();
         }
             
+        return Ok(response);
+    }
+    
+    [HttpGet]
+    [ProducesResponseType(typeof(ResponseTotalsJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseErrorMessageJson), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public IActionResult GetAll()
+    {
+        var useCase = new GetAllTotalsUseCase();
+        var response = useCase.Execute();
         return Ok(response);
     }
 }
