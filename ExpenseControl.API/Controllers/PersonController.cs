@@ -15,6 +15,7 @@ public class PersonController :  ControllerBase
     // Informando que é um controller de API
     // Definindo como a url deve ser construída
     [HttpPost]
+    [Route("register")]
     // Retorna o status code 201 (Created) quando a criação for bem sucedida
     [ProducesResponseType(typeof(ResponsePersonJson),StatusCodes.Status201Created)]
     // Retorna o status code 400 (Bad Request) quando houver erro na requisição
@@ -32,6 +33,7 @@ public class PersonController :  ControllerBase
     
     
     [HttpGet]
+    [Route("get-all")]
     [ProducesResponseType<ResponseAllPersonJson>(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -52,7 +54,7 @@ public class PersonController :  ControllerBase
     [HttpGet]
     // informa que o parâmetro da rota é "id"
     // Responsável por diferenciar os métodos GET
-    [Route("{id:guid}")]
+    [Route("find/{id:guid}")]
     [ProducesResponseType(typeof(ResponsePersonAllTransactionsJson), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ResponseErrorMessageJson), StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -66,9 +68,9 @@ public class PersonController :  ControllerBase
     }
     
     [HttpPut]
-    [Route("{id:guid}")]
+    [Route("update/{id:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(typeof(ResponsePersonJson), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ResponseErrorMessageJson), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ResponsePersonJson), StatusCodes.Status404NotFound)]
     public IActionResult Update([FromRoute] Guid id, [FromBody] RequestRegisterPersonJson request)
     {
@@ -82,14 +84,14 @@ public class PersonController :  ControllerBase
     
     //  Definindo que o método responde a requisições DELETE (DELETE)
     [HttpDelete]
-    [Route("{personId:guid}")]
+    [Route("delete/{id:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ResponseErrorMessageJson), StatusCodes.Status404NotFound)]
 
-    public IActionResult Delete([FromRoute] Guid personId)
+    public IActionResult Delete([FromRoute] Guid id)
     {
         var useCase = new DeletePersonUseCase();
-        useCase.Execute(personId);
+        useCase.Execute(id);
         
         return NoContent();
         
