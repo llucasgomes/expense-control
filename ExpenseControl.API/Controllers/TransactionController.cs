@@ -2,7 +2,6 @@ using ExpenseControl.API.UseCases.Transaction.Delete;
 using ExpenseControl.API.UseCases.Transaction.GetAll;
 using ExpenseControl.API.UseCases.Transaction.GetById;
 using ExpenseControl.API.UseCases.Transaction.Register;
-using ExpenseControl.API.UseCases.Transaction.SummaryById;
 using ExpenseControl.API.UseCases.Transaction.Update;
 using ExpenseControl.Communication.Requests;
 using ExpenseControl.Communication.Responses;
@@ -76,28 +75,9 @@ public class TransactionController : ControllerBase
     {
         var useCase = new UpdateTransactionUseCase();
 
-        var response = useCase.Execute(id, request);
+        useCase.Execute(id, request);
 
         return NoContent();
-    }
-    
-    [HttpGet]
-    [Route("summary/{id:guid}")]
-    [ProducesResponseType<ResponseTransactionsSummaryJson>(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public IActionResult GetTransactionsSummary(Guid id)
-    {
-        var useCase = new GetTransactionsSummaryByPersonUseCase();
-
-        var response = useCase.Execute(id); 
-
-        if (response.Transactions.Count == 0)
-        {
-            return NoContent();
-        }
-            
-        return Ok(response);
     }
     
     //  Definindo que o método responde a requisições DELETE (DELETE)
