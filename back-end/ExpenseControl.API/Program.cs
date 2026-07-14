@@ -14,6 +14,18 @@ builder.Services.AddRouting(option => option.LowercaseUrls = true);
 // Configura um filtro Geral
 builder.Services.AddMvc(options => options.Filters.Add<ExceptionFilter>());
 
+// Política de CORS para aceitar requisições do front end
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("FrontendPolicy", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:3001", "https://localhost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 
 
 var app = builder.Build();
@@ -28,6 +40,7 @@ if (app.Environment.IsDevelopment())
 //Console.WriteLine(Directory.GetCurrentDirectory());
 
 app.UseHttpsRedirection();
+app.UseCors("FrontendPolicy"); //CORS
 app.MapControllers();
 app.Run();
 

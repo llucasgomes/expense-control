@@ -21,7 +21,7 @@ public class RegisterTransactionUseCase
         var person = dbContext.People.FirstOrDefault(p => p.Id == request.PersonId)
                      ?? throw new NotFoundException("Pessoa não encontrada.");
         
-        if (person.Age < 18 && request.Type == TransactionType.Expense)
+        if (person.Age < 18 && request.Type == TransactionType.Income)
             throw new ErrorOnvValidationException(new List<string>
             {
                 "Pessoas menores de 18 anos não podem ter transações do tipo Receita."

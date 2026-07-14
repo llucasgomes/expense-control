@@ -30,6 +30,7 @@ public class GetAllTotalsUseCase
             {
                 PersonId = p.Id,
                 PersonName = p.Name,
+                Age = p.Age,
                 TotalIncome = totalIncome,
                 TotalExpenses = totalExpenses,
                 Balance = totalIncome - totalExpenses

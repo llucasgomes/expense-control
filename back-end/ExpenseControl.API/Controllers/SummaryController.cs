@@ -11,7 +11,7 @@ namespace ExpenseControl.API.Controllers;
 public class SummaryController:ControllerBase
 {
     [HttpGet]
-    [Route("summary/{id:guid}")]
+    [Route("{id:guid}")]
     [ProducesResponseType<ResponseTransactionsSummaryJson>(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -21,10 +21,10 @@ public class SummaryController:ControllerBase
 
         var response = useCase.Execute(id); 
 
-        if (response.Transactions.Count == 0)
-        {
-            return NoContent();
-        }
+        // if (response.Transactions.Count == 0)
+        // {
+        //     return NoContent();
+        // }
             
         return Ok(response);
     }

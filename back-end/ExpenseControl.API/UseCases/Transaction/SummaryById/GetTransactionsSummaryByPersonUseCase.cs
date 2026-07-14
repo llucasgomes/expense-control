@@ -33,6 +33,7 @@ public class GetTransactionsSummaryByPersonUseCase
         return new ResponseTransactionsSummaryJson
         {
             PersonId = person.Id,
+            PersonAge = person.Age,
             PersonName = person.Name,
             TotalExpenses = totalExpenses,
             TotalIncome = totalIncome,
