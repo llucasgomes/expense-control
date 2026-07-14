@@ -1,22 +1,25 @@
 import { ComponentProps } from "react";
 import { Controller, useFormContext } from "react-hook-form";
+
+import { Person } from "@/types/person";
+import { FieldWrapper } from "@/components/ui/select/field-wrapper";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
-} from "../select";
-import { FieldWrapper } from "./field-wrapper";
-import { Person } from "@/types/person";
+} from "@/components/ui/select";
 
 type SelectionFieldProps = ComponentProps<typeof Select> & {
   label: string;
   name: string;
-  list: Person[];
+  list: {
+    id: number;
+    type: string;
+  }[];
 };
 
-export const SelectionField = ({
+export const SelectionFieldType = ({
   label,
   name,
   list,
@@ -41,18 +44,18 @@ export const SelectionField = ({
           >
             <SelectTrigger>
               {field.value
-                ? list.find((p) => p.id.toString() === field.value)?.name
-                : "Selecione uma Pessoa"}
+                ? list.find((p) => p.id.toString() === field.value)?.type
+                : "Selecione um Tipo"}
             </SelectTrigger>
 
             <SelectContent>
               <>
                 <SelectItem value="0" disabled>
-                  Selecione uma Pessoa
+                  Selecione um Tipo
                 </SelectItem>
                 {list.map((person) => (
                   <SelectItem key={person.id} value={person.id.toString()}>
-                    {person.name}
+                    {person.type}
                   </SelectItem>
                 ))}
               </>
