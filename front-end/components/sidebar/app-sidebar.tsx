@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import {
   Sidebar,
@@ -10,29 +10,24 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
-  SidebarMenuItem
-} from '@/components/ui/sidebar'
+  SidebarMenuItem,
+} from "@/components/ui/sidebar";
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { RoutesLink } from './route-links'
-
-
-
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { RoutesLink } from "./route-links";
 
 type AppSidebarProps = {
-  listMenu: RoutesLink[]
-}
+  listMenu: RoutesLink[];
+};
 
 export function AppSidebar({ listMenu }: AppSidebarProps) {
-
-  const pathname = usePathname()
-  console.log('pathname', pathname)
+  const pathname = usePathname();
 
   return (
     <Sidebar variant="floating">
       <SidebarHeader className="items-center justify-center rounded-t-lg">
-       <h1>Gerenciador de Despesas</h1>
+        <h1>Gerenciador de Despesas</h1>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
@@ -41,8 +36,9 @@ export function AppSidebar({ listMenu }: AppSidebarProps) {
             <SidebarMenu>
               {listMenu.map((item) => {
                 const isActive =
-                  item.path === '/' ? pathname === item.path : pathname.startsWith(item.path)
-                    
+                  item.path === "/"
+                    ? pathname === item.path
+                    : pathname.startsWith(item.path);
 
                 return (
                   <SidebarMenuItem key={item.title}>
@@ -50,17 +46,17 @@ export function AppSidebar({ listMenu }: AppSidebarProps) {
                       className="hover:bg-primary data-[active=true]:bg-sidebar-primary data-[active=true]:text-white"
                       isActive={isActive}
                       tooltip={item.title}
-                      
                     >
-                      <Link href={item.path} className="flex items-center gap-2 w-full">
+                      <Link
+                        href={item.path}
+                        className="flex items-center gap-2 w-full"
+                      >
                         {item.icon}
                         <span>{item.title}</span>
-                       
-                     
                       </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
-                )
+                );
               })}
             </SidebarMenu>
           </SidebarGroupContent>
@@ -70,5 +66,5 @@ export function AppSidebar({ listMenu }: AppSidebarProps) {
         {/* <NavUser user={user} listMenu={listMenu} /> */}
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
